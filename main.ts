@@ -6,10 +6,8 @@ info.onCountdownEnd(function () {
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
-    pizza.setPosition(69, 20)
-    girl.setPosition(20, 100)
-    boy.setPosition(134, 98)
-    boy.follow(pizza, 50)
+    player1.setPosition(20, 100)
+    enemy1.setPosition(140, 100)
     pizza.setImage(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -53,10 +51,8 @@ info.onLifeZero(function () {
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
-    pizza.setPosition(69, 20)
-    girl.setPosition(20, 100)
-    boy.setPosition(134, 98)
-    boy.follow(pizza, 50)
+    player1.setPosition(20, 100)
+    enemy1.setPosition(140, 100)
     pizza.setImage(img`
         . . b b b b . . 
         . b 5 5 5 5 b . 
@@ -87,8 +83,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
         4 4 4 4 . . . . . . . . . . . . 
         `)
 })
-let boy: Sprite = null
-let girl: Sprite = null
+let enemy1: Sprite = null
+let player1: Sprite = null
 let pizza: Sprite = null
 scene.setBackgroundColor(1)
 pizza = sprites.create(img`
@@ -109,8 +105,8 @@ pizza = sprites.create(img`
     4 d d d 4 4 4 . . . . . . . . . 
     4 4 4 4 . . . . . . . . . . . . 
     `, SpriteKind.Food)
-pizza.setPosition(69, 20)
-girl = sprites.create(img`
+pizza.setPosition(80, 20)
+player1 = sprites.create(img`
     . . . . . . . . . . . . . . 
     . f f f . f f f f f . . . . 
     f f f f f c c c c f f . . . 
@@ -128,10 +124,10 @@ girl = sprites.create(img`
     . . f f f f f f f f f f . . 
     . . . f f . . . f f f . . . 
     `, SpriteKind.Player)
-girl.setPosition(20, 100)
-controller.moveSprite(girl)
-girl.setStayInScreen(true)
-boy = sprites.create(img`
+player1.setPosition(20, 100)
+controller.moveSprite(player1)
+player1.setStayInScreen(true)
+enemy1 = sprites.create(img`
     . . . . . . . . . . . . . 
     . . . . f f f f f f . . . 
     . . . f f f f f f f f f . 
@@ -149,8 +145,8 @@ boy = sprites.create(img`
     . . f f f f f f f f f f . 
     . . . f f f . . . f f . . 
     `, SpriteKind.Enemy)
-boy.setPosition(134, 98)
-boy.follow(pizza, 50)
+enemy1.setPosition(140, 100)
+enemy1.follow(pizza, 50)
 info.setScore(0)
 info.setLife(3)
 info.startCountdown(10)
