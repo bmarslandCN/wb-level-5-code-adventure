@@ -6,8 +6,7 @@ info.onCountdownEnd(function () {
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
-    player1.setPosition(20, 100)
-    enemy1.setPosition(140, 100)
+    sprite.destroy()
     pizza.setImage(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -51,8 +50,7 @@ info.onLifeZero(function () {
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
-    player1.setPosition(20, 100)
-    enemy1.setPosition(140, 100)
+    player1.setPosition(80, 60)
     pizza.setImage(img`
         . . b b b b . . 
         . b 5 5 5 5 b . 
@@ -83,7 +81,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
         4 4 4 4 . . . . . . . . . . . . 
         `)
 })
-let enemy1: Sprite = null
 let player1: Sprite = null
 let pizza: Sprite = null
 scene.setBackgroundColor(14)
@@ -107,7 +104,7 @@ pizza = sprites.create(img`
     4 d d d 4 4 4 . . . . . . . . . 
     4 4 4 4 . . . . . . . . . . . . 
     `, SpriteKind.Food)
-pizza.setPosition(80, 20)
+pizza.setPosition(80, 60)
 player1 = sprites.create(img`
     . . . . . . . . . . . . . . 
     . f f f . f f f f f . . . . 
@@ -126,10 +123,10 @@ player1 = sprites.create(img`
     . . f f f f f f f f f f . . 
     . . . f f . . . f f f . . . 
     `, SpriteKind.Player)
-player1.setPosition(20, 100)
+player1.setPosition(80, 108)
 controller.moveSprite(player1)
 player1.setStayInScreen(true)
-enemy1 = sprites.create(img`
+let enemy1 = sprites.create(img`
     . . . . . . . . . . . . . 
     . . . . f f f f f f . . . 
     . . . f f f f f f f f f . 
@@ -148,7 +145,27 @@ enemy1 = sprites.create(img`
     . . . f f f . . . f f . . 
     `, SpriteKind.Enemy)
 enemy1.setPosition(140, 100)
-enemy1.follow(pizza, 50)
+enemy1.follow(player1, 15)
+let enemy2 = sprites.create(img`
+    . . . . . . . . . . . . 
+    . . . f f f f f f . . . 
+    . f f f e e e e e f . . 
+    f f f e e e e e e e f . 
+    f f f f e e e e e e e f 
+    f f f f f e e e 4 e e f 
+    f f f f e e e 4 4 e e f 
+    f f f f 4 4 4 4 4 e f f 
+    f f 4 e 4 f f 4 4 e f . 
+    f f 4 d 4 d d d d f . . 
+    . f f f 4 d d b b f . . 
+    . 4 d d e 4 4 4 e f . . 
+    . e d d e 1 1 1 1 f . . 
+    . f e e f 6 6 6 6 f f . 
+    . f f f f f f f f f f . 
+    . . f f . . . f f f . . 
+    `, SpriteKind.Enemy)
+enemy2.setPosition(20, 100)
+enemy2.follow(player1, 25)
 info.setScore(0)
 info.setLife(3)
 info.startCountdown(10)
