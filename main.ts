@@ -86,7 +86,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
 let enemy1: Sprite = null
 let player1: Sprite = null
 let pizza: Sprite = null
-scene.setBackgroundColor(1)
+scene.setBackgroundColor(14)
+game.showLongText("Earn points by getting to the pizza first!", DialogLayout.Center)
+game.showLongText("Lose a life when the enemy beats you to the pizza.", DialogLayout.Center)
 pizza = sprites.create(img`
     . . . . . . b b b b . . . . . . 
     . . . . . . b 4 4 4 b . . . . . 
