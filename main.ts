@@ -21,6 +21,36 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     info.changeLifeBy(-1)
     music.powerDown.playUntilDone()
 })
+game.setDialogFrame(img`
+    ..bbbbbbbbbbbbbbbbbbbb..
+    .bd111111111111111111db.
+    bd1dbbbbbbbbbbbbbbbbd1db
+    b1dbbbbbbbbbbbbbbbbbbd1b
+    b1bd1111111111111111db1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1b111111111111111111b1b
+    b1bd1111111111111111db1b
+    bd1bbbbbbbbbbbbbbbbbb1db
+    bbd111111111111111111dbb
+    .bbbbbbbbbbbbbbbbbbbbbb.
+    ..bbbbbbbbbbbbbbbbbbbb..
+    `)
+game.setDialogTextColor(3)
+game.showLongText("Eat all the apples before the enemies get them!", DialogLayout.Full)
+game.showLongText("Lose a point when an enemy eats an apple.", DialogLayout.Full)
+game.showLongText("Lose a life when you touch an enemy!", DialogLayout.Full)
 info.setScore(0)
 info.setLife(3)
 info.startCountdown(8)
